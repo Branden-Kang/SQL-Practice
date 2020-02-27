@@ -45,7 +45,7 @@ referencing old as n
 for each row
 begin
 delete from teaches
-where teaches.id = :n.id; 
+where teaches.id = :n.id;
 end;
 --Q3
 --As we know triggers always ran as part of transaction,
