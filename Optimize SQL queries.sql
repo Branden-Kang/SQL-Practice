@@ -1,3 +1,5 @@
+-- Reference: https://towardsdatascience.com/how-to-optimize-sql-queries-742177cd5cc6
+-- Thanks
 --1. Don't use "select *"
 
 select * from employee;
