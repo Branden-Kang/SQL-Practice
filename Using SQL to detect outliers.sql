@@ -1,3 +1,4 @@
+# Reference: https://towardsdatascience.com/using-sql-to-detect-outliers-aff676bb2c1a
 CREATE TABLE KidWts (Name nvarchar(20),Age int ,Weight float);
 INSERT INTO KidWts VALUES
 (‘Lily’,3,15), 
