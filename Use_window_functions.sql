@@ -48,7 +48,7 @@ ORDER BY
 FROM
  store_sales;
  
-// 1. Calculating running totals
+-- 1. Calculating running totals
 SELECT
  store_name,
  MONTH,
@@ -59,7 +59,7 @@ ORDER BY
 FROM
  store_sales;
  
-// 2. Comparing to a group statistic.
+-- 2. Comparing to a group statistic.
 SELECT
  store_name,
  state ,
@@ -69,7 +69,7 @@ SELECT
 FROM
  store_sales;
  
-// 3. Calculating moving averages
+-- 3. Calculating moving averages
 SELECT
  store_name ,
  MONTH,
