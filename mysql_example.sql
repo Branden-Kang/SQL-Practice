@@ -1,0 +1,2 @@
+-- 1. Connect to the server
+-- sudo mysql -u root
