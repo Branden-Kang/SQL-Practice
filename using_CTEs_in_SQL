@@ -1,0 +1,47 @@
+-- CTE (Common Table Expression) 
+WITH sales_cte AS (
+  SELECT customer_id, SUM(amount) AS total_spent
+  FROM sales
+  GROUP BY customer_id
+)
+SELECT *
+FROM sales_cte
+WHERE total_spent > 1000;
+
+WITH active_users AS (
+  SELECT user_id
+  FROM events
+  WHERE event_type = 'login'
+)
+SELECT COUNT(*) FROM active_users;      -- reference 1
+SELECT AVG(session_time) FROM active_users;  -- reference 2
+
+-- Looks clean, but internally, Spark executes the active_users CTE twice — once for each reference
+
+-- Temp Views: Logical Breakpoints
+-- A temp view gives you the same modularity as a CTE but avoids recomputation.
+CREATE OR REPLACE TEMP VIEW active_users AS
+SELECT user_id
+FROM events
+WHERE event_type = 'login';
+
+SELECT COUNT(*) FROM active_users;
+SELECT AVG(session_time) FROM active_users;
+
+-- Temp Tables — Physical Snapshots
+-- Temporary tables keep intermediate results to persist physically for debugging or reuse across sessions
+CREATE OR REPLACE TEMPORARY TABLE active_users AS
+SELECT user_id
+FROM events
+WHERE event_type = 'login';
+
+-- Cache Tables: When Reuse Is High
+CACHE TABLE active_users;
+
+-- Manually refresh
+UNCACHE TABLE active_users;
+CACHE TABLE active_users;
+
+-- Use LAZY cache with refresh
+CACHE LAZY TABLE active_users;
+REFRESH TABLE active_users;
