@@ -1,9 +1,9 @@
 -- Window Functions
-AVG(column_name) OVER (
-    PARTITION BY [optional_grouping]
-    ORDER BY [date_column]
-    ROWS BETWEEN [N] PRECEDING AND CURRENT ROW
-)
+-- AVG(column_name) OVER (
+--     PARTITION BY [optional_grouping]
+--     ORDER BY [date_column]
+--     ROWS BETWEEN [N] PRECEDING AND CURRENT ROW
+-- )
 
 -- The 7-Day Rolling Revenue
 SELECT 
